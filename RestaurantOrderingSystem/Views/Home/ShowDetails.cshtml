@@ -1,0 +1,40 @@
+﻿@model IEnumerable<RestaurantOrderingSystem.Models.OrderDb>
+
+@{
+    ViewData["Title"] = "Orders List";
+}
+
+<h2>Orders List</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Order No</th>
+            <th>Customer</th>
+            <th>Items</th>
+            <th>Price</th>
+            <th>Payment</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OrderId</td>
+                <td>@item.OrderNo</td>
+                <td>@item.Customer</td>
+                <td>@item.Items</td>
+                <td>@item.Price</td>
+                <td>@item.Payment</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.OrderId" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.OrderId" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Create New Order</a>
